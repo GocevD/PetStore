@@ -1,4 +1,5 @@
 package com.gocevd.petstore.model.enumerations;
 
-public class Type {
+public enum Type {
+    CAT, DOG
 }
