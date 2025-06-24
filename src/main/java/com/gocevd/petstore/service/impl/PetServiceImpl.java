@@ -4,6 +4,7 @@ import com.gocevd.petstore.model.*;
 import com.gocevd.petstore.model.enumerations.Type;
 import com.gocevd.petstore.repository.jpa.PetRepository;
 import com.gocevd.petstore.service.PetService;
+import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Service
 public class PetServiceImpl implements PetService {
-
+    Faker faker = new Faker();
     private final PetRepository petRepository;
 
     public PetServiceImpl(PetRepository petRepository) {
@@ -29,8 +30,8 @@ public class PetServiceImpl implements PetService {
         for(int i = 1; i < 11; i++) {
             Dog dog = new Dog();
             Money money = new Money();
-            dog.setName("Dog" + i);
-            dog.setDescription("Dog" + i + " description");
+            dog.setName(faker.dog().name());
+            dog.setDescription(faker.dog().breed());
             dog.setBirthDate(generateRandomBirthDate());
             dog.setRating((int) (Math.random()*10));
             dog.setType(Type.DOG);
@@ -42,8 +43,8 @@ public class PetServiceImpl implements PetService {
         for(int i = 1; i < 11; i++) {
             Cat cat = new Cat();
             Money money = new Money();
-            cat.setName("Cat" + i);
-            cat.setDescription("Cat" + i + " description");
+            cat.setName(faker.cat().name());
+            cat.setDescription(faker.cat().breed());
             cat.setBirthDate(generateRandomBirthDate());
             cat.setType(Type.CAT);
             money.setAmount(cat.calculatePrice());

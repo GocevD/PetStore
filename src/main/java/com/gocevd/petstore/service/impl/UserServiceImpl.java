@@ -4,12 +4,15 @@ import com.gocevd.petstore.model.Money;
 import com.gocevd.petstore.model.User;
 import com.gocevd.petstore.repository.jpa.UserRepository;
 import com.gocevd.petstore.service.UserService;
+import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    Faker faker = new Faker();
 
     private final UserRepository userRepository;
 
@@ -23,9 +26,9 @@ public class UserServiceImpl implements UserService {
             Money money = new Money();
             User user = new User();
             money.setAmount(Math.round(200+Math.random()*100));
-            user.setFirstName("User" + i);
-            user.setLastName("User" + i);
-            user.setEmail("user" + i + "@example.com");
+            user.setFirstName(faker.name().firstName());
+            user.setLastName(faker.name().lastName());
+            user.setEmail(faker.internet().emailAddress());
             user.setBudget(money);
             userRepository.save(user);
         }
