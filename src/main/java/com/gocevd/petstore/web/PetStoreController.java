@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/petstore")
+@RequestMapping("/api")
 public class PetStoreController {
     private final PetStoreService petStoreService;
     private final HistoryLogService historyLogService;
