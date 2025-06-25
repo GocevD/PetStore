@@ -1,13 +1,13 @@
 package com.gocevd.petstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gocevd.petstore.model.enumerations.Type;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.cglib.core.Local;
-
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @Getter
 @Setter
@@ -21,7 +21,13 @@ public abstract class Pet {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id")
+    @JsonIgnore
     private User owner;
+
+    @JsonProperty("owner")
+    public String getOwnerName(){
+        return owner != null ? owner.getFirstName() + " " + owner.getLastName() : null;
+    }
 
     @Column(nullable = false)
     private String name;
@@ -34,7 +40,13 @@ public abstract class Pet {
     private String description;
 
     @Embedded
+    @JsonIgnore
     private Money price;
+
+    @JsonProperty("price")
+    public double getPriceAmt(){
+        return this.price.amount;
+    }
 
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
