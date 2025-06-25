@@ -24,7 +24,7 @@ public class PetStoreGraphQLController {
     }
 
     @QueryMapping
-    public List<HistoryLog> historyLog() {
+    public List<HistoryLog> historyLogs() {
         return historyLogService.historyLog();
     }
 
