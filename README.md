@@ -20,7 +20,7 @@ This is a SpringBoot application where the methods are implemented to be used as
 - GET localhost:8080/api/history - Lists all buy attempts made with their date and time, successful purchases and failed purchases. 
 
 ## Running the application
-To run the application it can be done by running PetStoreApplication's main method or running ./mvwn spring-boot:run in the terminal from the root project directory.
+To run the application it can be done by running PetStoreApplication's main method or running ./mvnw spring-boot:run in the terminal from the root project directory.
 The database it is running on by default is h2 and can be accessed on localhost:8080/h2-console with no setup needed with the following credentials
 - JDBC URL: jdbc:h2:mem:petstore
 - Username: sa
