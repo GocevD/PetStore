@@ -1,4 +1,4 @@
-# Scopisto Pet Store
+# Pet Store
 This is a SpringBoot application where the methods are implemented to be used as REST endpoints, and there is also GraphQL support in addition to REST which runs on its own mutations/querries in seperate controllers, packaged within web/graphql. Users can create/add pets to the store or buy pets from the store. 
 
 ## Assumptions made during development:
