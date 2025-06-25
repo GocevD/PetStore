@@ -1,7 +1,7 @@
 package com.gocevd.petstore.service;
 
-import org.springframework.stereotype.Service;
+import com.gocevd.petstore.model.HistoryLog;
 
 public interface PetStoreService {
-    void buy();
+    HistoryLog buy();
 }

@@ -28,7 +28,7 @@ public class Dog extends Pet{
 
     @Override
     public String successfulPurchaseMessage() {
-        return "Woof, dog " + this.getName() + " has owner " + this.getOwner();
+        return "Woof, dog " + this.getName() + " has owner " + this.getOwnerName();
     }
 
 }

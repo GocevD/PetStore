@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface PetService {
-    void createPets();
+    List<Pet> createPets();
     Pet savePet(Pet pet);
     List<Pet> listPets();
     Pet findPetWithoutOwner();

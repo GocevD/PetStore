@@ -10,7 +10,6 @@ import com.gocevd.petstore.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class PetStoreServiceImpl implements PetStoreService {
@@ -26,7 +25,7 @@ public class PetStoreServiceImpl implements PetStoreService {
 
 
     @Override
-    public void buy() {
+    public HistoryLog buy() {
         HistoryLog historyLog = new HistoryLog();
         historyLog.setDateOfExecution(LocalDateTime.now());
         for(User user : userService.listUsers()){
@@ -38,5 +37,6 @@ public class PetStoreServiceImpl implements PetStoreService {
             } else historyLog.increaseFailedPurchases();
         }
         historyLogService.addLog(historyLog);
+        return historyLog;
     }
 }

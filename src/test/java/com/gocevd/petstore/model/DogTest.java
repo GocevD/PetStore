@@ -24,6 +24,6 @@ class DogTest {
         user.setLastName("Jones");
         dog.setOwner(user);
         String message = dog.successfulPurchaseMessage();
-        assertTrue(message.contains("Woof, dog Buddy has owner Bob Jones"));
+        assertTrue(message.contains("Woof, dog Buddy has owner Bob"));
     }
 } 

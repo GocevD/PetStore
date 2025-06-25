@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface UserService {
-    void createUsers();
+    List<User> createUsers();
     List<User> listUsers();
     User saveUser(User user);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,8 +26,8 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public void createPets() {
-
+    public List<Pet> createPets() {
+        List<Pet> createdPets = new ArrayList<>();
         for(int i = 1; i < 11; i++) {
             Dog dog = new Dog();
             Money money = new Money();
@@ -38,7 +39,7 @@ public class PetServiceImpl implements PetService {
             dog.setOwner(null);
             money.setAmount(dog.calculatePrice());
             dog.setPrice(money);
-            petRepository.save(dog);
+            createdPets.add(petRepository.save(dog));
         }
         for(int i = 1; i < 11; i++) {
             Cat cat = new Cat();
@@ -50,8 +51,9 @@ public class PetServiceImpl implements PetService {
             money.setAmount(cat.calculatePrice());
             cat.setPrice(money);
             cat.setOwner(null);
-            petRepository.save(cat);
+            createdPets.add(petRepository.save(cat));
         }
+        return createdPets;
     }
 
     @Override

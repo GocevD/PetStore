@@ -7,6 +7,7 @@ import com.gocevd.petstore.service.UserService;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +22,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUsers() {
+    public List<User> createUsers() {
+        List<User> createdUsers = new ArrayList<>();
         for(int i = 1; i < 11; i++) {
             Money money = new Money();
             User user = new User();
@@ -30,8 +32,9 @@ public class UserServiceImpl implements UserService {
             user.setLastName(faker.name().lastName());
             user.setEmail(faker.internet().emailAddress());
             user.setBudget(money);
-            userRepository.save(user);
+            createdUsers.add(userRepository.save(user));
         }
+        return createdUsers;
     }
 
     @Override

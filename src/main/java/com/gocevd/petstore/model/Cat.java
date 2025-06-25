@@ -20,7 +20,7 @@ public class Cat extends Pet {
 
     @Override
     public String successfulPurchaseMessage() {
-        return "Meow, cat " + this.getName() + " has owner " + this.getOwner();
+        return "Meow, cat " + this.getName() + " has owner " + this.getOwnerName();
     }
 
 }
