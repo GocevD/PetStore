@@ -2,10 +2,7 @@ package com.gocevd.petstore.model;
 
 import com.gocevd.petstore.model.enumerations.Type;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Cat extends Pet {
