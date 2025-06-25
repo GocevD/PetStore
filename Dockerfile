@@ -15,6 +15,7 @@ RUN ./mvnw dependency:go-offline -B
 COPY src ./src
 
 
+#tests are run here
 RUN ./mvnw clean package
 
 
