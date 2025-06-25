@@ -11,15 +11,7 @@ This is a SpringBoot application where the methods are implemented to be used as
 - Making a method using JPARepository to find a pet without owner will make the buy method easier to implement with cleaner code (findFirstByOwnerIsNullOrderById).
 - Creating random users and pets - instead of using a for cycle and naming users from 1-10 used the Datafaker dependency to generate fake information. (https://www.datafaker.net/documentation/getting-started/).
 
-## API endpoints:
-- POST localhost:8080/api/create-users - Creates 10 users with initialized values 
-- GET localhost:8080/api/list-users - Lists all created users
-- POST localhost:8080/api/create-pets - Creates 20 pets(10 cats/10 dogs) with initialized values
-- GET localhost:8080/api/list-pets - Lists all created pets
-- POST localhost:8080/api/buy - Matches a pet with no owner and gives it to a user until all users get a pet. Running this will keep buying pets for users until there are no more pets or the users run out of budget.
-- GET localhost:8080/api/history - Lists all buy attempts made with their date and time, successful purchases and failed purchases. 
-
-## Running the application
+## Running the application(requires java version 24)
 To run the application it can be done by running PetStoreApplication's main method or running ./mvnw spring-boot:run in the terminal from the root project directory.
 The database it is running on by default is h2 and can be accessed on localhost:8080/h2-console with no setup needed with the following credentials
 - JDBC URL: jdbc:h2:mem:petstore
@@ -27,6 +19,21 @@ The database it is running on by default is h2 and can be accessed on localhost:
 - Password: password
 
 To start the application with PostgreSQL as the database, the commented out PostgreSQL properties in application.properties should be uncommented and the marked h2 properties should be commented, setting the username and password to a local user, and creating a database.
+(this is not possible if running with the docker image)
+
+## Running the application with Docker
+In case there are dependency problems and the application won't run, you can start the app as a docker container.
+- Pull the docker image with ```docker pull dimitarxz/petstore-app:1.0```
+- Run the docker image with ```docker run -p 8080:8080 dimitarxz/petstore-app:1.0```(or another host-side port which isn't in use)
+
+
+## API endpoints:
+- POST localhost:8080/api/create-users - Creates 10 users with initialized values 
+- GET localhost:8080/api/list-users - Lists all created users
+- POST localhost:8080/api/create-pets - Creates 20 pets(10 cats/10 dogs) with initialized values
+- GET localhost:8080/api/list-pets - Lists all created pets
+- POST localhost:8080/api/buy - Matches a pet with no owner and gives it to a user until all users get a pet. Running this will keep buying pets for users until there are no more pets or the users run out of budget.
+- GET localhost:8080/api/history - Lists all buy attempts made with their date and time, successful purchases and failed purchases. 
 
 ## GraphQL
 
@@ -43,7 +50,8 @@ Mutations:
 - buy
 
 ## Tests:
-All the tests can be ran by executing ./mvnw test in the terminal
+All the tests can be ran by executing ./mvnw test in the terminal.<br>
+If the application is ran with Docker, the tests are done during the building of the image. If a test fails, the image won't be built.
 
 
 
