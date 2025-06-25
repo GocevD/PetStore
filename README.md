@@ -21,10 +21,14 @@ This is a SpringBoot application where the methods are implemented to be used as
 
 ## Running the application
 To run the application it can be done by running PetStoreApplication's main method or running ./mvwn spring-boot:run in the terminal from the root project directory.
-The database it is running on is h2 and can be accessed on localhost:8080/h2-console
+The database it is running on by default is h2 and can be accessed on localhost:8080/h2-console with no setup needed with the following credentials
 - JDBC URL: jdbc:h2:mem:petstore
 - Username: sa
 - Password: password
+
+To start the application with PostgreSQL as the database, the commented out PostgreSQL properties in application.properties should be uncommented and the marked h2 properties should be commented, setting the username and password to a local user, and creating a database.
+
+## GraphQL
 
 GraphQL functionalities can be accessed on localhost:8080/graphiql
 
