@@ -1,16 +1,6 @@
 # Pet Store
 This is a SpringBoot application where the methods are implemented to be used as REST endpoints, and there is also GraphQL support in addition to REST which runs on its own mutations/querries in seperate controllers, packaged within web/graphql. Users can create/add pets to the store or buy pets from the store. 
 
-## Assumptions made during development:
-- Budget field within the User model and price within Pet should be objects of a seperate class(Money).
-- Users have no field for pet while in pet there is a foreign key pointing to user(User owner).
-- Owner within Pet should have eager loading for hibernate to resolve it and have it show up in the endpoint at the cost of performance.
-- Rating is not a seperate class but instead an integer.
-- Cat/Dog should be an enumeration(Type).
-- Buy method should be within the user model and take Pet as an argument, so we can easily set the pets owner to "this".
-- Making a method using JPARepository to find a pet without owner will make the buy method easier to implement with cleaner code (findFirstByOwnerIsNullOrderById).
-- Creating random users and pets - instead of using a for cycle and naming users from 1-10 used the Datafaker dependency to generate fake information. (https://www.datafaker.net/documentation/getting-started/).
-
 ## Running the application(requires java version 24)
 To run the application it can be done by running PetStoreApplication's main method or running ./mvnw spring-boot:run in the terminal from the root project directory.
 
